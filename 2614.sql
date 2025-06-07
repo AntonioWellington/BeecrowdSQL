@@ -34,5 +34,9 @@ VALUES
   (5,	'02/03/2016',	6),
   (6,	'04/04/2016',	4);
   
-  /*  Execute this query to drop the tables */
-  -- DROP TABLE rentals, customers; --
+SELECT customers.name, rentals.rentals_date
+FROM customers
+JOIN rentals ON customers.id = rentals.id_customers
+WHERE EXTRACT(MONTH FROM rentals.rentals_date) = 09
+  AND EXTRACT(YEAR FROM rentals.rentals_date) = 2016
+ORDER BY rentals.rentals_date;
